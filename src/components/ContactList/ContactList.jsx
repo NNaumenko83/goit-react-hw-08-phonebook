@@ -12,10 +12,11 @@ const ConttList = styled(List)`
 `;
 
 const ContactList = ({ contacts }) => {
+  console.log(contacts);
   return (
     <ConttList>
-      {contacts.map(({ id, name, phone }) => {
-        return <ContactItem key={id} id={id} name={name} phone={phone} />;
+      {contacts.map(({ id, name, number }) => {
+        return <ContactItem key={id} id={id} name={name} number={number} />;
       })}
     </ConttList>
   );

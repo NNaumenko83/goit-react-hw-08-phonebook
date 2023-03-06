@@ -23,7 +23,7 @@ const ConttForm = styled(Form)`
   font-size: 20px;
 `;
 
-const initialValues = { name: '', phone: '' };
+const initialValues = { name: '', number: '' };
 
 const nameRegExp = /^[a-zA-Zа-яА-Я]+(([' -][a-zA-Zа-яА-Я ])?[a-zA-Zа-яА-Я]*)*$/;
 
@@ -39,7 +39,7 @@ let SignupSchema = yup.object().shape({
       "Name may contain only letters, apostrophe, dash and spaces. For example Adrian, Jacob Mercer, Charles de Batz de Castelmore d'Artagnan"
     )
     .required(),
-  phone: yup
+  number: yup
     .string()
     .matches(
       phoneRegExp,
@@ -52,6 +52,7 @@ const ContactForm = ({ contacts }) => {
   const [addContact, { isLoading }] = useAddContactMutation();
 
   const handleSubmit = async (values, { resetForm }) => {
+    console.log('handleSubmit');
     if (checkContactName(values.name)) {
       toast.error('This contact is already exist', {
         position: 'top-center',
@@ -98,8 +99,8 @@ const ContactForm = ({ contacts }) => {
 
         <Label>
           Number
-          <Input type="tel" name="phone" required />
-          <ErrorMessage name="phone" component="span" />
+          <Input type="tel" name="number" />
+          <ErrorMessage name="number" component="span" />
         </Label>
 
         <Button type="submit" disabled={isLoading}>

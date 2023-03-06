@@ -12,7 +12,9 @@ export const Navigation = () => {
       <NavLink to="/goit-react-hw-08-phonebook">Home</NavLink>
 
       {/* <NavLink to="/goit-react-hw-08-phonebook/contacts">Contacts</NavLink> */}
-      {isLoggedIn && <NavLink to="/tasks">Tasks</NavLink>}
+      {isLoggedIn && (
+        <NavLink to="/goit-react-hw-08-phonebook/contacts">Contacts</NavLink>
+      )}
     </nav>
   );
 };

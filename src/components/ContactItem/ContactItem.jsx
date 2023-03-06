@@ -44,7 +44,9 @@ function stringAvatar(name) {
   };
 }
 
-const ContactItem = ({ name, phone, id }) => {
+const ContactItem = ({ name, number, id }) => {
+  console.log(name, number, id);
+
   const [deleteContact, { isLoading }] = useDeleteContactMutation();
 
   const handleButtonClick = async id => {
@@ -65,7 +67,7 @@ const ContactItem = ({ name, phone, id }) => {
     <ContItem disablePadding>
       <Avatar {...stringAvatar(name)} />
       <Name>{name}:</Name>
-      <span>{phone}</span>
+      <span>{number}</span>
 
       <Button
         type="button"
@@ -94,7 +96,7 @@ const ContactItem = ({ name, phone, id }) => {
 
 ContactItem.propTypes = {
   name: PropTypes.string,
-  phone: PropTypes.string,
+  number: PropTypes.string,
   id: PropTypes.string,
 };
 
