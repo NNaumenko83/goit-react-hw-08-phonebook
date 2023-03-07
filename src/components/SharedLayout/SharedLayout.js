@@ -1,14 +1,16 @@
 import { Outlet } from 'react-router-dom';
-import { AppBar } from 'components';
+import { AppBarComp } from 'components';
 import { Suspense } from 'react';
+import Container from '@mui/material/Container';
 
 export const SharedLayout = () => {
   return (
-    <div style={{ maxWidth: 960, margin: '0 auto', padding: '0 16px' }}>
-      <AppBar />
+    <Container>
+      <AppBarComp />
+
       <Suspense fallback={null}>
         <Outlet />
       </Suspense>
-    </div>
+    </Container>
   );
 };
