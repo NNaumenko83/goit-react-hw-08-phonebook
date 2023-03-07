@@ -4,9 +4,6 @@ import axios from 'axios';
 const axiosBaseQuery =
   () =>
   async ({ url, method, data }) => {
-    console.log(url);
-    console.log(method);
-    console.log(data);
     try {
       const result = await axios({ url: url, method, data });
       return { data: result.data };
@@ -32,10 +29,16 @@ export const contactsApi = createApi({
         query: () => ({ url: '/contacts', method: 'get' }),
         providesTags: ['Contacts'],
       }),
+
       addContact: build.mutation({
         query: body => {
-          console.log(body);
           return { url: '/contacts', method: 'post', data: body };
+        },
+        invalidatesTags: ['Contacts'],
+      }),
+      updateContact: build.mutation({
+        query: ({ id, ...fields }) => {
+          return { url: `/contacts/${id}`, method: 'patch', data: fields };
         },
         invalidatesTags: ['Contacts'],
       }),
@@ -47,6 +50,8 @@ export const contactsApi = createApi({
       }),
     };
   },
+
+  // updateContact,
   // endpoints: builder => ({
   //   getContacts: builder.query({
   //     query: () => `contacts`,
@@ -75,4 +80,5 @@ export const {
   useGetContactsQuery,
   useDeleteContactMutation,
   useAddContactMutation,
+  useUpdateContactMutation,
 } = contactsApi;

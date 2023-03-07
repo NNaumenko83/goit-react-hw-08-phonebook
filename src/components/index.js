@@ -5,3 +5,4 @@ export { RegisterForm } from './RegisterForm';
 export { UserMenu } from './UserMenu';
 export { LoginForm } from './LoginForm/LoginForm';
 // export {LoginForm} from './LoginForm';
+// export {Modal} from './Modal';

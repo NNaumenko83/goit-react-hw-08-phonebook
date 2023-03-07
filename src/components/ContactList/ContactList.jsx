@@ -12,7 +12,6 @@ const ConttList = styled(List)`
 `;
 
 const ContactList = ({ contacts }) => {
-  console.log(contacts);
   return (
     <ConttList>
       {contacts.map(({ id, name, number }) => {

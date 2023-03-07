@@ -52,7 +52,6 @@ const ContactForm = ({ contacts }) => {
   const [addContact, { isLoading }] = useAddContactMutation();
 
   const handleSubmit = async (values, { resetForm }) => {
-    console.log('handleSubmit');
     if (checkContactName(values.name)) {
       toast.error('This contact is already exist', {
         position: 'top-center',

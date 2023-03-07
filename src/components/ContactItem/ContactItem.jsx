@@ -6,6 +6,7 @@ import ListItem from '@mui/material/ListItem';
 import styled from '@emotion/styled';
 import Avatar from '@mui/material/Avatar';
 import { toast } from 'react-toastify';
+import { useNavigate } from 'react-router-dom';
 
 const ContItem = styled(ListItem)`
   gap: 10px;
@@ -45,8 +46,7 @@ function stringAvatar(name) {
 }
 
 const ContactItem = ({ name, number, id }) => {
-  console.log(name, number, id);
-
+  const navigate = useNavigate();
   const [deleteContact, { isLoading }] = useDeleteContactMutation();
 
   const handleButtonClick = async id => {
@@ -68,6 +68,30 @@ const ContactItem = ({ name, number, id }) => {
       <Avatar {...stringAvatar(name)} />
       <Name>{name}:</Name>
       <span>{number}</span>
+
+      <Button
+        type="button"
+        onClick={() => {
+          navigate(`/goit-react-hw-08-phonebook/contacts/edit/${id}`);
+        }}
+        disabled={isLoading}
+      >
+        {isLoading && (
+          <Oval
+            height={15}
+            width={15}
+            color="rgb(25, 0, 185)"
+            wrapperStyle={{}}
+            wrapperClass=""
+            visible={true}
+            ariaLabel="oval-loading"
+            secondaryColor="#4fa94d"
+            strokeWidth={2}
+            strokeWidthSecondary={2}
+          />
+        )}
+        Edit
+      </Button>
 
       <Button
         type="button"
