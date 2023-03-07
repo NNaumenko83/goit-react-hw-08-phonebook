@@ -4,6 +4,7 @@ import { logIn } from 'redux/auth/operations';
 import Box from '@mui/material/Box';
 import TextField from '@mui/material/TextField';
 import Button from '@mui/material/Button';
+import Stack from '@mui/material/Stack';
 
 export const LoginForm = () => {
   const dispatch = useDispatch();
@@ -30,28 +31,30 @@ export const LoginForm = () => {
       autoComplete="off"
       onSubmit={handleSubmit}
     >
-      <TextField
-        type="email"
-        name="email"
-        id="filled-basic"
-        label="Email"
-        variant="outlined"
-      />
-      <TextField
-        type="password"
-        name="password"
-        id="standard-basic"
-        label="Password"
-        variant="outlined"
-      />
-      {/* <button type="submit">Log In</button> */}
-      <Button
-        type="submit"
-        variant="contained"
-        sx={{ height: 55, width: '25ch' }}
-      >
-        Log In
-      </Button>
+      <Stack spacing={2}>
+        <TextField
+          type="email"
+          name="email"
+          id="filled-basic"
+          label="Email"
+          variant="outlined"
+        />
+        <TextField
+          type="password"
+          name="password"
+          id="standard-basic"
+          label="Password"
+          variant="outlined"
+        />
+        {/* <button type="submit">Log In</button> */}
+        <Button
+          type="submit"
+          variant="contained"
+          sx={{ height: 55, width: '200' }}
+        >
+          Log In
+        </Button>
+      </Stack>
     </Box>
     // <form onSubmit={handleSubmit} autoComplete="off">
     //   <label>

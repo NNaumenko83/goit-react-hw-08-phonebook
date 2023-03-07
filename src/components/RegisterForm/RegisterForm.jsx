@@ -2,6 +2,7 @@ import React from 'react';
 import { useDispatch } from 'react-redux';
 import { register } from 'redux/auth/operations';
 import Button from '@mui/material/Button';
+import Stack from '@mui/material/Stack';
 
 // import styles from './RegisterForm.module.css';
 
@@ -34,34 +35,37 @@ export const RegisterForm = () => {
       autoComplete="off"
       onSubmit={handleSubmit}
     >
-      <TextField
-        id="outlined-basic"
-        name="name"
-        type="text"
-        label="Username"
-        variant="outlined"
-      />
-      <TextField
-        type="email"
-        name="email"
-        id="filled-basic"
-        label="Email"
-        variant="outlined"
-      />
-      <TextField
-        type="password"
-        name="password"
-        id="standard-basic"
-        label="Password"
-        variant="outlined"
-      />
-      <Button
-        type="submit"
-        variant="contained"
-        sx={{ height: 55, width: '25ch' }}
-      >
-        Register
-      </Button>
+      <Stack spacing={2}>
+        <TextField
+          id="outlined-basic"
+          name="name"
+          type="text"
+          label="Username"
+          variant="outlined"
+        />
+        <TextField
+          type="email"
+          name="email"
+          id="filled-basic"
+          label="Email"
+          variant="outlined"
+        />
+        <TextField
+          type="password"
+          name="password"
+          id="standard-basic"
+          label="Password"
+          variant="outlined"
+        />
+        <Button
+          type="submit"
+          variant="contained"
+          sx={{ height: 55, width: '200' }}
+        >
+          Register
+        </Button>
+      </Stack>
+
       {/* <button type="submit">Register</button> */}
     </Box>
   );
