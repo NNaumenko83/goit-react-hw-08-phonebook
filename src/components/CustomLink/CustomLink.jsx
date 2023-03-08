@@ -1,6 +1,5 @@
 import React from 'react';
 import { Link, useMatch } from 'react-router-dom';
-import styled from '@emotion/styled';
 
 export const CustomLink = ({ children, to, ...props }) => {
   const match = useMatch(to);
