@@ -20,12 +20,6 @@ const EditContactModal = lazy(() =>
 );
 const NotFound = lazy(() => import('pages/NotFound'));
 
-// import { Home } from 'pages/Home/Home';
-// import { Contacts } from 'pages/Contacts/Contacts';
-// import { Login } from 'pages/Login/Login';
-// import { Register } from 'pages/Register/Register';
-// import { EditContactModal } from 'components/EditContactlModal/EditContactModal';
-
 const App = () => {
   const dispatch = useDispatch();
   const { isRefreshing } = useAuth();

@@ -1,6 +1,6 @@
 import React from 'react';
 import { Formik, Form, Field, ErrorMessage } from 'formik';
-import { Label, Button } from './ContactForm.styled';
+import { Label } from './ContactForm.styled';
 import styled from '@emotion/styled';
 import * as yup from 'yup';
 import 'yup-phone';
@@ -8,6 +8,7 @@ import PropTypes from 'prop-types';
 import { useAddContactMutation } from 'redux/contactsApi';
 import { toast } from 'react-toastify';
 import { Oval } from 'react-loader-spinner';
+import Button from '@mui/material/Button';
 
 const Input = styled(Field)`
   max-width: 100%;
@@ -102,7 +103,16 @@ const ContactForm = ({ contacts }) => {
           <ErrorMessage name="number" component="span" />
         </Label>
 
-        <Button type="submit" disabled={isLoading}>
+        <Button
+          type="submit"
+          disabled={isLoading}
+          variant="contained"
+          sx={{
+            height: 40,
+            width: 200,
+            ':hover': { backgroundColor: 'green' },
+          }}
+        >
           {isLoading && (
             <Oval
               height={15}

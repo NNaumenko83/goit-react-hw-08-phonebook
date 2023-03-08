@@ -16,8 +16,12 @@ export const Button = styled.button`
 
 export const Name = styled.span`
   color: #37474f;
+  font-size: 20px;
   font-weight: 500;
 `;
 
-export const Phone = styled`
+export const Phone = styled.span`
+  color: #37474f;
+  font-size: 20px;
+  font-weight: 500;
 `;

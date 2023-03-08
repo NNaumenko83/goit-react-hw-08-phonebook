@@ -1,7 +1,19 @@
 import { Formik, Form, Field, ErrorMessage } from 'formik';
 import * as yup from 'yup';
 import 'yup-phone';
+import styled from '@emotion/styled';
+import Button from '@mui/material/Button';
+import Box from '@mui/material/Box';
 
+const Text = styled.span`
+  font-size: 20px;
+`;
+
+const Input = styled(Field)`
+  max-width: 100%;
+  margin-left: auto;
+  font-size: 20px;
+`;
 export const ContactEditorForm = ({
   initialValues = { name: '', number: '' },
   onSubmit,
@@ -45,21 +57,45 @@ export const ContactEditorForm = ({
     >
       {({ isSubmitting }) => (
         <Form>
-          <label>
-            Name
-            <Field name="name" type="text" />
-            <ErrorMessage name="name" component="span" />
-          </label>
-          <br />
-          <label>
-            Number
-            <Field name="number" type="text" />
-            <ErrorMessage name="number" component="span" />
-          </label>
-          <br />
-          <button type="submit" disabled={isSubmitting}>
-            {btnText}
-          </button>
+          <Box
+            component="span"
+            sx={{
+              p: 2,
+              display: 'flex',
+              flexDirection: 'column',
+              alignItems: 'center',
+            }}
+          >
+            <label>
+              <Box component="div" sx={{ p: 2, display: 'flex', gap: '10px' }}>
+                <Text>Name</Text>
+                <Input name="name" type="text" />
+              </Box>
+
+              <ErrorMessage name="name" component="span" />
+            </label>
+            <br />
+            <label>
+              <Box component="div" sx={{ p: 2, display: 'flex', gap: '10px' }}>
+                <Text>Number</Text>
+                <Input name="number" type="text" />
+              </Box>
+              <ErrorMessage name="number" component="span" />
+            </label>
+            <br />
+            <Button
+              type="submit"
+              disabled={isSubmitting}
+              variant="contained"
+              sx={{
+                height: 40,
+                width: 200,
+                ':hover': { backgroundColor: 'green' },
+              }}
+            >
+              {btnText}
+            </Button>
+          </Box>
         </Form>
       )}
     </Formik>

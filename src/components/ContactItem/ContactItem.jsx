@@ -1,17 +1,22 @@
-import { Button, Name } from './ContactItem.styled';
+import { Name, Phone } from './ContactItem.styled';
 import PropTypes from 'prop-types';
 import { useDeleteContactMutation } from 'redux/contactsApi';
 import { Oval } from 'react-loader-spinner';
-import ListItem from '@mui/material/ListItem';
-import styled from '@emotion/styled';
+// import ListItem from '@mui/material/ListItem';
+// import styled from '@emotion/styled';
 import Avatar from '@mui/material/Avatar';
 import { toast } from 'react-toastify';
 import { useNavigate } from 'react-router-dom';
+import Box from '@mui/material/Box';
+import Stack from '@mui/material/Stack';
 
-const ContItem = styled(ListItem)`
-  gap: 10px;
-  font-size: 25px;
-`;
+// =====================
+import Button from '@mui/material/Button';
+
+// const ContItem = styled(ListItem)`
+//   gap: 10px;
+//   font-size: 25px;
+// `;
 
 function stringToColor(string) {
   let hash = 0;
@@ -64,57 +69,92 @@ const ContactItem = ({ name, number, id }) => {
   };
 
   return (
-    <ContItem disablePadding>
-      <Avatar {...stringAvatar(name)} />
-      <Name>{name}:</Name>
-      <span>{number}</span>
+    <Box
+      component="li"
+      sx={{
+        display: 'flex',
+        justifyContent: 'space-between',
+        padding: '5px',
+        alignItems: 'center',
+        borderBottomStyle: 'groove',
+      }}
+    >
+      <Stack
+        spacing={2}
+        direction="row"
+        sx={{
+          display: 'flex',
 
-      <Button
-        type="button"
-        onClick={() => {
-          navigate(`/goit-react-hw-08-phonebook/contacts/edit/${id}`);
+          alignItems: 'center',
         }}
-        disabled={isLoading}
       >
-        {isLoading && (
-          <Oval
-            height={15}
-            width={15}
-            color="rgb(25, 0, 185)"
-            wrapperStyle={{}}
-            wrapperClass=""
-            visible={true}
-            ariaLabel="oval-loading"
-            secondaryColor="#4fa94d"
-            strokeWidth={2}
-            strokeWidthSecondary={2}
-          />
-        )}
-        Edit
-      </Button>
+        <Avatar {...stringAvatar(name)} />
+        <Name>{name}:</Name>
+        <Phone>{number}</Phone>
+      </Stack>
 
-      <Button
-        type="button"
-        onClick={() => handleButtonClick(id)}
-        disabled={isLoading}
-      >
-        {isLoading && (
-          <Oval
-            height={15}
-            width={15}
-            color="rgb(25, 0, 185)"
-            wrapperStyle={{}}
-            wrapperClass=""
-            visible={true}
-            ariaLabel="oval-loading"
-            secondaryColor="#4fa94d"
-            strokeWidth={2}
-            strokeWidthSecondary={2}
-          />
-        )}
-        Delete
-      </Button>
-    </ContItem>
+      <Stack spacing={2} direction="row">
+        <Button
+          type="button"
+          onClick={() => {
+            navigate(`/goit-react-hw-08-phonebook/contacts/edit/${id}`);
+          }}
+          disabled={isLoading}
+          variant="contained"
+          sx={{
+            height: 30,
+            width: 100,
+            ':hover': { backgroundColor: 'green' },
+          }}
+        >
+          {isLoading && (
+            <Oval
+              height={15}
+              width={15}
+              color="rgb(25, 0, 185)"
+              wrapperStyle={{}}
+              wrapperClass=""
+              visible={true}
+              ariaLabel="oval-loading"
+              secondaryColor="#4fa94d"
+              strokeWidth={2}
+              strokeWidthSecondary={2}
+            />
+          )}
+          Edit
+        </Button>
+
+        <Button
+          type="button"
+          onClick={() => handleButtonClick(id)}
+          disabled={isLoading}
+          variant="contained"
+          sx={{
+            height: 30,
+            width: 100,
+            backgroundColor: 'orange',
+
+            ':hover': { backgroundColor: 'red' },
+          }}
+        >
+          {isLoading && (
+            <Oval
+              height={15}
+              width={15}
+              color="rgb(25, 0, 185)"
+              wrapperStyle={{}}
+              wrapperClass=""
+              visible={true}
+              ariaLabel="oval-loading"
+              secondaryColor="#4fa94d"
+              strokeWidth={2}
+              strokeWidthSecondary={2}
+            />
+          )}
+          Delete
+        </Button>
+      </Stack>
+    </Box>
   );
 };
 

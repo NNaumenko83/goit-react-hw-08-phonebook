@@ -3,8 +3,7 @@ import { useDispatch } from 'react-redux';
 import { register } from 'redux/auth/operations';
 import Button from '@mui/material/Button';
 import Stack from '@mui/material/Stack';
-
-// import styles from './RegisterForm.module.css';
+import { toast } from 'react-toastify';
 
 import Box from '@mui/material/Box';
 import TextField from '@mui/material/TextField';
@@ -15,6 +14,24 @@ export const RegisterForm = () => {
   const handleSubmit = e => {
     e.preventDefault();
     const form = e.currentTarget;
+    if (
+      !form.elements.name.value ||
+      !form.elements.email.value ||
+      !form.elements.password.value
+    ) {
+      toast.error('Fill in all fields', {
+        position: 'top-center',
+        autoClose: 3000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+        theme: 'colored',
+      });
+      return;
+    }
+
     dispatch(
       register({
         name: form.elements.name.value,
@@ -65,8 +82,6 @@ export const RegisterForm = () => {
           Register
         </Button>
       </Stack>
-
-      {/* <button type="submit">Register</button> */}
     </Box>
   );
 };

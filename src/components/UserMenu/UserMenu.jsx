@@ -1,18 +1,48 @@
 import { useDispatch } from 'react-redux';
 import { logOut } from 'redux/auth/operations';
 import { useAuth } from '../../Hooks/useAuth';
-import css from './UserMenu.module.css';
+import Box from '@mui/material/Box';
+import Button from '@mui/material/Button';
+import { Text } from './UserMenu.styled';
 
 export const UserMenu = () => {
   const dispatch = useDispatch();
   const { user } = useAuth();
 
   return (
-    <div className={css.wrapper}>
-      <p className={css.username}>Welcome, {user.name}</p>
-      <button type="button" onClick={() => dispatch(logOut())}>
+    <Box component="div" sx={{ display: 'flex', gap: 2, alignItems: 'center' }}>
+      <Text>
+        Welcome, <b>{user.name}</b>
+      </Text>
+      <Button
+        type="button"
+        variant="contained"
+        onClick={() => dispatch(logOut())}
+        sx={{
+          height: 30,
+          width: 100,
+          backgroundColor: 'green',
+          ':hover': { backgroundColor: 'orange' },
+        }}
+      >
         Logout
-      </button>
-    </div>
+      </Button>
+    </Box>
   );
 };
+
+// <Button
+//   type="button"
+//   onClick={() => {() => dispatch(logOut());
+//   }}
+
+//   variant="contained"
+//   sx={{
+//     height: 30,
+//     width: 100,
+//     ':hover': { backgroundColor: 'green' },
+//   }}
+// >
+
+//   Logout
+// </Button>;

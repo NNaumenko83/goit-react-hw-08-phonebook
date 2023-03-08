@@ -5,9 +5,15 @@ import Container from '@mui/material/Container';
 
 export const SharedLayout = () => {
   return (
-    <Container>
+    <Container
+      sx={{
+        maxWidth: '1200px',
+        paddingTop: 10,
+        display: 'flex',
+        justifyContent: 'center',
+      }}
+    >
       <AppBarComp />
-
       <Suspense fallback={null}>
         <Outlet />
       </Suspense>

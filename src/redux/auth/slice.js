@@ -15,7 +15,7 @@ const authSlice = createSlice({
   initialState,
   extraReducers: builder => {
     builder
-      .addCase(register.pending, (state, action) => {
+      .addCase(register.pending, state => {
         return state;
       })
       .addCase(register.fulfilled, (state, action) => {

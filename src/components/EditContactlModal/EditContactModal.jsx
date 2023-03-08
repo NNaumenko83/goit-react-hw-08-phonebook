@@ -5,6 +5,8 @@ import { useParams } from 'react-router-dom';
 import { useGetContactsQuery } from 'redux/contactsApi';
 import { useUpdateContactMutation } from 'redux/contactsApi';
 import { toast } from 'react-toastify';
+import Button from '@mui/material/Button';
+import Box from '@mui/material/Box';
 
 const EditContactModal = () => {
   const { contactId } = useParams();
@@ -52,17 +54,40 @@ const EditContactModal = () => {
   return (
     <Overlay>
       <Modal>
-        {contact && (
-          <ContactEditorForm
-            initialValues={{ name: contactName, number: contactNumber }}
-            btnText="Save changes"
-            onSubmit={handleUpdateContact}
-          />
-        )}
-
-        <button type="button" onClick={closeModal}>
-          Close
-        </button>
+        <Box
+          component="div"
+          sx={{
+            p: 2,
+            border: '1px dashed grey',
+            borderRadius: '5px',
+            display: 'flex',
+            flexDirection: 'column',
+            alignItems: 'center',
+            gap: '10px',
+          }}
+        >
+          {' '}
+          {contact && (
+            <ContactEditorForm
+              initialValues={{ name: contactName, number: contactNumber }}
+              btnText="Save changes"
+              onSubmit={handleUpdateContact}
+            />
+          )}
+          <Button
+            type="button"
+            onClick={closeModal}
+            variant="contained"
+            sx={{
+              height: 40,
+              width: 200,
+              backgroundColor: 'orange',
+              ':hover': { backgroundColor: 'red' },
+            }}
+          >
+            Close
+          </Button>
+        </Box>
       </Modal>
     </Overlay>
   );

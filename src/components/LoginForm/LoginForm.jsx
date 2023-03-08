@@ -5,6 +5,7 @@ import Box from '@mui/material/Box';
 import TextField from '@mui/material/TextField';
 import Button from '@mui/material/Button';
 import Stack from '@mui/material/Stack';
+import { toast } from 'react-toastify';
 
 export const LoginForm = () => {
   const dispatch = useDispatch();
@@ -12,6 +13,20 @@ export const LoginForm = () => {
   const handleSubmit = e => {
     e.preventDefault();
     const form = e.currentTarget;
+    if (!form.elements.email.value || !form.elements.password.value) {
+      toast.error('Fill in all fields', {
+        position: 'top-center',
+        autoClose: 3000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+        theme: 'colored',
+      });
+      return;
+    }
+
     dispatch(
       logIn({
         email: form.elements.email.value,
